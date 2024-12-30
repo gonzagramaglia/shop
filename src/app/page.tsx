@@ -24,7 +24,9 @@ export default function Home() {
                 </div>
                 <h1 className="relative w-fit tracking-tight text-balance mt-16 font-bold !leading-tight text-gray-900 text-5xl md:text-6xl lg:text-7xl">
                   Your Image on a{" "}
-                  <span className="bg-green-600 px-2 text-white">Custom</span>{" "}
+                  <span className="bg-custom-green px-2 text-white">
+                    Custom
+                  </span>{" "}
                   Phone Case
                 </h1>
                 <p className="mt-8 text-lg lg:pr-10 max-w-prose text-center lg:text-lft text-balance md:text-wrap">
@@ -81,11 +83,11 @@ export default function Home() {
 
                   <div className="flex flex-col justify-between items-center sm:items-start">
                     <div className="flex gap-0.5">
-                      <Star className="h-4 w-4 text-green-600 fill-green-600" />
-                      <Star className="h-4 w-4 text-green-600 fill-green-600" />
-                      <Star className="h-4 w-4 text-green-600 fill-green-600" />
-                      <Star className="h-4 w-4 text-green-600 fill-green-600" />
-                      <Star className="h-4 w-4 text-green-600 fill-green-600" />
+                      <Star className="h-4 w-4 text-custom-green fill-custom-green" />
+                      <Star className="h-4 w-4 text-custom-green fill-custom-green" />
+                      <Star className="h-4 w-4 text-custom-green fill-custom-green" />
+                      <Star className="h-4 w-4 text-custom-green fill-custom-green" />
+                      <Star className="h-4 w-4 text-custom-green fill-custom-green" />
                     </div>
 
                     <p>

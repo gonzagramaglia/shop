@@ -24,7 +24,7 @@ export default function Home() {
                 </div>
                 <h1 className="relative w-fit tracking-tight text-balance mt-16 font-bold !leading-tight text-gray-900 text-5xl md:text-6xl lg:text-7xl">
                   Your Image on a{" "}
-                  <span className="bg-custom-green px-2 text-white">
+                  <span className="bg-custom-green px-2 text-white rounded-">
                     Custom
                   </span>{" "}
                   Phone Case

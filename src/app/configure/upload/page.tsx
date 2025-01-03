@@ -8,7 +8,6 @@ import Dropzone, { FileRejection } from "react-dropzone";
 import { Progress } from "@/components/ui/progress";
 import { useUploadThing } from "@/lib/uploadthing";
 import { useToast } from "@/hooks/use-toast";
-import Steps from "@/components/Steps";
 
 const Page = () => {
   const { toast } = useToast();
@@ -47,7 +46,6 @@ const Page = () => {
 
   return (
     <>
-      <Steps />
       <div
         className={cn(
           "relative h-full flex-1 my-16 w-full rounded-xl bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:rounded-2xl flex justify-center flex-col items-center",

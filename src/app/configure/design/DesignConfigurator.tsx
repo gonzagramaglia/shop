@@ -31,6 +31,9 @@ import { ChevronsUpDown, Check, ArrowRight } from "lucide-react";
 import { DropdownMenuContent } from "@radix-ui/react-dropdown-menu";
 import { useUploadThing } from "@/lib/uploadthing";
 import { useToast } from "@/hooks/use-toast";
+import { useMutation } from "@tanstack/react-query";
+import { saveConfig as _saveConfig, SaveConfigArgs } from "./actions";
+import { useRouter } from "next/navigation";
 
 interface DesignConfiguratorProps {
   configId: string;
@@ -44,6 +47,25 @@ const DesignConfigurator = ({
   imageDimensions,
 }: DesignConfiguratorProps) => {
   const { toast } = useToast();
+  const router = useRouter();
+
+  const { mutate: saveConfig } = useMutation({
+    mutationKey: ["saveConfig"],
+    mutationFn: async (args: SaveConfigArgs) => {
+      await Promise.all([saveConfiguration(), _saveConfig(args)]);
+    },
+    onError: () => {
+      toast({
+        title: "Something went wrong",
+        description: "There was an error saving your config, please try again",
+        variant: "destructive",
+      });
+    },
+    onSuccess: () => {
+      router.push(`/configure/preview?id=${configId}`);
+    },
+  });
+
   const [options, setOptions] = useState<{
     color: (typeof COLORS)[number];
     model: (typeof MODELS.options)[number];
@@ -244,7 +266,7 @@ const DesignConfigurator = ({
                     ))}
                   </div>
                 </RadioGroup>
-                <div className="relative flex flex-col gap-3 w-full">
+                <div className="relative flex flex-col gap-3 w-full z-10">
                   <Label>Model</Label>
                   <DropdownMenu>
                     <DropdownMenuTrigger asChild>
@@ -262,7 +284,7 @@ const DesignConfigurator = ({
                         <DropdownMenuItem
                           key={model.label}
                           className={cn(
-                            "flex text-sm gap-1 items-center p-2 cursor-default hover:bg-zinc-100",
+                            "flex text-sm gap-1 items-center p-2 px-6 cursor-default bg-white shadow-md hover:bg-zinc-100",
                             {
                               "bg-zinc-100":
                                 model.label === options.model.label,
@@ -365,7 +387,15 @@ const DesignConfigurator = ({
                 )}
               </p>
               <Button
-                onClick={() => saveConfiguration()}
+                onClick={() =>
+                  saveConfig({
+                    configId,
+                    color: options.color.value,
+                    finish: options.finish.value,
+                    material: options.material.value,
+                    model: options.model.value,
+                  })
+                }
                 size="sm"
                 className="w-full"
               >

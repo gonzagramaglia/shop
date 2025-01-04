@@ -8,6 +8,8 @@ import { COLORS, MODELS } from "@/validators/option-validator";
 import { Check } from "lucide-react";
 import { BASE_PRICE, PRODUCT_PRICES } from "@/config/products";
 import { formatPrice } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
 
 const DesignPreview = ({ configuration }: { configuration: Configuration }) => {
   const [showConfetti, setShowConfetti] = useState(false);
@@ -81,7 +83,7 @@ const DesignPreview = ({ configuration }: { configuration: Configuration }) => {
           </div>
 
           <div className="mt-8">
-            <div className="mg-gray-50 p-6 sm:rounded-lg sm:p-8">
+            <div className="bg-gray-100 p-6 sm:rounded-lg sm:p-8">
               <div className="flow-root text-sm">
                 <div className="flex items-center justify-between py-1 mt-2">
                   <p className="text-gray-600">Base price</p>
@@ -124,6 +126,17 @@ const DesignPreview = ({ configuration }: { configuration: Configuration }) => {
                   </p>
                 </div>
               </div>
+            </div>
+
+            <div className="mt-8 flex justify-end pb-12">
+              <Button
+                disabled={true}
+                isLoading={true}
+                loadingText="loading "
+                className="px-4 sm:px-6 lg:px-8"
+              >
+                Check out <ArrowRight className="h-4 w-4 ml-1.5 inline" />
+              </Button>
             </div>
           </div>
         </div>
